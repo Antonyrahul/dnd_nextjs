@@ -4,6 +4,7 @@ import { ItemTypes } from '../utils/items';
 import { useContext } from 'react';
 import { CardContext } from '../pages/tasks';
 
+
 const BoxTarget = props => {
 	const { markAsDone } = useContext(CardContext);
 
@@ -22,13 +23,19 @@ const BoxTarget = props => {
 			p={3}
 			boxShadow='sm'
 			bg={isOver ? 'green.500' : 'green.200'}
-			minH='200px'
+			minH='100vh'
 			textAlign='center'
 			w='100%'
 			rounded='md'
 			color='white'>
 			{props.children}
 		</Box>
+		// <div
+		// ref={drop}
+		// bg={isOver ? 'green.500' : 'green.200'}
+		// >
+		// 	{props.children}
+		// </div>
 	);
 };
 

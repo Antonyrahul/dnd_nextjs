@@ -1,6 +1,8 @@
 import { Box, Badge, Text, Flex } from '@chakra-ui/core';
 import { ItemTypes } from '../utils/items';
 import { useDrag } from 'react-dnd';
+import {Resizable} from 're-resizable'
+
 
 const TaskCard = props => {
 	const [{ isDragging }, drag] = useDrag({
@@ -14,6 +16,7 @@ const TaskCard = props => {
 	});
 
 	return (
+		<Resizable>
 		<Box
 			ref={drag}
 			my='4'
@@ -38,6 +41,7 @@ const TaskCard = props => {
 				{props.details}
 			</Text>
 		</Box>
+		</Resizable>
 	);
 };
 
