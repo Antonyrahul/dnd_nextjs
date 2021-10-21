@@ -18,7 +18,7 @@ const preview = () => {
       console.log(typeof(doneList))
   }, 2000);
 
-
+  /*Identifies the component and arranges it accordingly   */
   const processComponentEnd = (task) => {
 		 
     switch(task.title) {

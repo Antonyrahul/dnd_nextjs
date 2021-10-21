@@ -179,6 +179,13 @@ const Tasks = () => {
 	// 	  console.log(state)
 	// 	}
 
+		/* Function name onUpdate 
+		Triggerd on any changes to position and width of any component. 
+		This is the function that gets the position coordinates and the width and height at any given point
+		
+	
+	*/
+
 	function onUpdate(id, payload,task) {
 		console.log(id,payload,task)
 		var mainelem = document.getElementById("podadei").getBoundingClientRect()
@@ -211,6 +218,13 @@ const Tasks = () => {
 		console.log(state)
 
 	  }
+
+	  /* Function name savedata
+
+	  Saves the json to the localstoreage for retrival during preview
+
+	 
+	  */
 	  function saveData(){
 		   var elemWiddth= document.getElementById("podadei").offsetWidth
 		  console.log(elemWiddth)
@@ -230,6 +244,8 @@ const Tasks = () => {
 		  console.log(duparr)
 		  localStorage.setItem("jsonData",JSON.stringify(duparr))
 	  }
+
+	  /*Identifies the component and arranges it accordingly   */
 	  const processComponentEnd = (task) => {
 		 
 		switch(task.title) {
@@ -341,10 +357,12 @@ const Tasks = () => {
 						<Button onClick={saveData}>
 							SAVE
 						</Button>
-						<div id="podadei">
+						<div id="podadei" className="editorclass">
 
 						
 						<BoxTarget >
+							
+							
 							{doneList
 								// .filter((task, i) => task.status === 'done')
 								.map((task, i) => (
@@ -357,7 +375,10 @@ const Tasks = () => {
 									// />
 									 processComponentEnd(task) 
 								))}
+								
+								
 						</BoxTarget>
+						
 						</div>
 					</Stack>
 				</Box>

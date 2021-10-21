@@ -22,7 +22,11 @@ const BoxTarget = props => {
 			m={2}
 			p={3}
 			boxShadow='sm'
-			bg={isOver ? 'green.500' : 'green.200'}
+			// bg={isOver ? 'green.500' : 'green.200'}
+			backgroundImage="linear-gradient(0deg, transparent 24%, rgba(91, 91, 91, .1) 25%, rgba(91, 91, 91, .1) 26%, transparent 27%, transparent 74%, rgba(91, 91, 91, .1) 75%, rgba(91, 91, 91, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(91, 91, 91, .1) 25%, rgba(91, 91, 91, .1) 26%, transparent 27%, transparent 74%, rgba(91, 91, 91, .1) 75%, rgba(91, 91, 91, .1) 76%, transparent 77%, transparent);"
+			backgroundSize="50px 50px"
+			bg="white"
+			
 			minH='100vh'
 			textAlign='center'
 			w='100%'
