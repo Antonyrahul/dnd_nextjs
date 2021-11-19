@@ -9,6 +9,8 @@ import ButtonComp from '../components/ButtonComp';
 import ContainerComp from '../components/ContainerComp';
 import FreeTransform from "react-free-transform";
 import { Button} from '@chakra-ui/core';
+import ContentEditable from "react-contenteditable";
+
 
 
 
@@ -246,8 +248,16 @@ const Tasks = () => {
 	  }
 
 	  /*Identifies the component and arranges it accordingly   */
+	  const [testPara,setTextPara] = useState({html: "Edit <b>mesdrftdrtdtdtdrt</b> !"});
+	 const handleChange = evt => {
+		 console.log(evt)
+		setTextPara({ html: evt.target.value });
+	  };
+	  const consoleit=()=>{
+		  console.log("clickerss")
+	  }
 	  const processComponentEnd = (task) => {
-		 
+	
 		switch(task.title) {
 
 			case "Button": 
@@ -264,7 +274,7 @@ const Tasks = () => {
 			{...task}
 		  >
 				
-				<Button colorScheme="blue" style={{color:"white",backgroundColor:"indigo"}} size="lg">
+				<Button id= {task.ordId} colorScheme="blue" style={{color:"white",backgroundColor:"indigo"}} size="lg">
 					Button
 				</Button>
 				
@@ -288,14 +298,17 @@ const Tasks = () => {
         	// 	background="linear-gradient(135deg, #0FF0B3 0%,#036ED9 100%)"
         	// 	classPrefix= "tr"
 			// />;
-			return 		<FreeTransform
+			return <FreeTransform
 			
 			key={task._id}
 			onUpdate={payload => onUpdate(task.ordId, payload,task)}
 			{...task}
 		  >
+			  	
 			<div
 			id= {task.ordId}
+			contentEditable="true"
+			onClick={consoleit}
 			  className="element"
 			  style={{
 				width: task.width,
@@ -304,9 +317,21 @@ const Tasks = () => {
 				...task.styles
 			  }}
 			>
-			  {task.title}
+			   {task.title} 
+			  {/* <ContentEditable
+			  onClick={console.log("clicked")}
+				html = {testPara.html}
+				
+				onChange={handleChange}
+				>
+					</ContentEditable> */}
+			
 			</div>
+
+			
 		  </FreeTransform>
+		  
+		  
 			case "Container": return <ContainerComp
 			key={task._id.toString()}
 			_id={task._id}
@@ -322,6 +347,7 @@ const Tasks = () => {
 
 
 	return (
+		
 		<CardContext.Provider value={{ markAsDone }}>
 			<Grid
 				gap={6}
@@ -332,9 +358,26 @@ const Tasks = () => {
 				p={3}>
 				<Box bg='gray.200' rounded='md' p={3} boxShadow='md'>
 					<Stack spacing={3}>
+					
+					<ContentEditable
+				html = {testPara.html}
+				disabled={false}
+				onChange={handleChange}
+				>
+					</ContentEditable>
+				<div
+				onClick={consoleit}
+				contentEditable="true"
+				>
+lmaio
+
+				</div>
+				
 						<Text fontSize='2xl' textAlign='center'>
 							Components
 						</Text>
+													
+	
 						{taskList
 							
 							.map((task, i) => (
@@ -361,6 +404,7 @@ const Tasks = () => {
 
 						
 						<BoxTarget >
+
 							
 							
 							{doneList

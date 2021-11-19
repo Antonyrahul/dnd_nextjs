@@ -1,6 +1,11 @@
 import React,{useEffect,useState} from 'react';
 import { Box, Grid, Stack, Text,Button ,Flex} from '@chakra-ui/core';
 import FreeTransform from "react-free-transform";
+import { ThemeProvider, CSSReset } from '@chakra-ui/core'
+import TaskCard from '../components/TaskCardEnd';
+
+
+
 
 
 
@@ -31,18 +36,47 @@ const preview = () => {
         // 	title={task.title}
         // 	details={task.details}
         // />;
-        return <FreeTransform
-        key={task._id}
+        return<div
+        style={{
+          position:"absolute",
+         
+          width: task.org_width,
+          height: task.org_height,
+         
+          scale:(task.scaleX,task.scaleY),
+         
+          left:task.org_x,
+          top:task.org_y,
+          
+          
+          
+          ...task.styles
+        }}
+        > <Button 
+       
+        style={{color:"white",backgroundColor:"indigo"}}
         
-        {...task}
-      >
+        colorScheme="blue" 
+        
+        size="lg">
+                   Button
+               </Button>
+               </div>  
+          
+        
+        
+      //   <FreeTransform
+      //   key={task._id}
+        
+      //   {...task}
+      // >
             
-            <Button colorScheme="blue" style={{color:"white",backgroundColor:"indigo"}} size="lg">
-                Button
-            </Button>
+      //       <Button colorScheme="blue" style={{color:"white",backgroundColor:"indigo"}} size="lg">
+      //           Button
+      //       </Button>
             
     
-        </FreeTransform>;
+      //   </FreeTransform>;
          case "Card": 
          //return <TaskCardEnd
         // 	key={task._id.toString()}
@@ -142,9 +176,12 @@ const preview = () => {
     }
   } 
       
-
+const objgh={hoof:"dfgdfdf"}
       
     return doneList.length>0? (
+      <ThemeProvider>
+           <CSSReset />
+
       <Flex w='100vw' h="100vh" position="relative">
 
       
@@ -162,7 +199,7 @@ const preview = () => {
                          processComponentEnd(task) 
                     ))}
      
-     </Flex>):"ope"
+     </Flex> </ThemeProvider>):"ope"
 
 
 
